@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # 2019.03.07 @ arejay.codes
+# fun with for & try
 
 import json
 import sys
