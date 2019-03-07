@@ -16,7 +16,7 @@ url = "http://redsky.target.com/v1/plp/search" + \
       "&sort_by=relevance"
 
 
-response = urlopen(url)			           # load url as string
+response = urlopen(url)			       # load url as string
 data     = response.read().decode("utf-8") # store properly encoded
 result   = json.loads(data);               # load json structure
 
