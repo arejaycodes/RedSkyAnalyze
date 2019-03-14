@@ -9,7 +9,7 @@
   function search() {
     str = document.getElementById('search').value;
     $.ajax({
-      url: "/target.php?q=" + str,
+      url: "/items.php?q=" + str,
       success: function (data) {
          console.log(data);
          $("#results").empty();
