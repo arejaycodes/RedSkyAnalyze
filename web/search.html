@@ -1,0 +1,26 @@
+<html>
+<head>
+   <script src="https://code.jquery.com/jquery-latest.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+<script>
+  function search() {
+    str = document.getElementById('search').value;
+    $.ajax({
+      url: "/target.php?q=" + str,
+      success: function (data) {
+         console.log(data);
+         $("#results").empty();
+         $("#results").append(data);
+        }
+     });
+  }
+</script>
+    <input type="text" id="search" name="search"/>
+    <input type="submit" value="Submit" onclick="search()"/>
+    <br>
+    <div id="results"></div>
+</body>
+</html>
