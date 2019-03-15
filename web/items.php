@@ -1,20 +1,20 @@
 <html>
 <head>
-   <script src="https://code.jquery.com/jquery-latest.js"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-   <?php
-     $input_string = $_GET["q"];
-     $sanitized_string = filter_var($input_string, FILTER_SANITIZE_STRING);
-     $url = "https://redsky.target.com/v1/plp/search?count=5&offset=0&keyword=" . urlencode($input_string) . "&sortby=relevance&excludes=taxonomy,promotion,relatedItemsBucket,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics";
-     $contents = file_get_contents($url);
-     $results = json_decode($contents, true);
-  ?>
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+		<?php
+			$input_string = $_GET["q"];
+			$sanitized_string = filter_var($input_string, FILTER_SANITIZE_STRING);
+			$url = "https://redsky.target.com/v1/plp/search?count=5&offset=0&keyword=" . urlencode($input_string) . "&sortby=relevance&excludes=taxonomy,promotion,relatedItemsBucket,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics";
+			$contents = file_get_contents($url);
+			$results = json_decode($contents, true);
+		?>
 </head>
 <body>
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <thead>
-    <tr>
+    <tr bgcp>
       <th><abbr title="Item">item</abbr></th>
       <th><abbr title="TCIN">TCIN</abbr></th>
       <th><abbr title="DPCI">DPCI</abbr></th>
@@ -24,7 +24,7 @@
     </tr>
   </thead>
     <tbody>
-    <tr class=>
+    <tr bgcolor="db7d9e">
       <td><?php  echo $results['search_response']['items']['Item']['0']['title']; ?></td>
       <td><?php  echo $results['search_response']['items']['Item']['0']['tcin']; ?> </td>
       <td><?php  echo $results['search_response']['items']['Item']['0']['dpci']; ?></td>
@@ -68,10 +68,12 @@
 </table>
 
 <?php
+
 echo "<br><br>Debug errors: ";
-echo json_last_error(); // 4 (JSON_ERROR_SYNTAX)
+echo json_last_error(); // print number of errors
 echo "<br>Message: ";
-echo json_last_error_msg(); // unexpected character 
+echo json_last_error_msg(); // print last error
+
 ?>
 </body>
 </html>
