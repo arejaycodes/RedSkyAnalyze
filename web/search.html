@@ -1,26 +1,49 @@
+
 <html>
 <head>
    <script src="https://code.jquery.com/jquery-latest.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 </head>
 <body>
 <script>
-  function search() {
-    str = document.getElementById('search').value;
-    $.ajax({
-      url: "/items.php?q=" + str,
-      success: function (data) {
-         console.log(data);
-         $("#results").empty();
-         $("#results").append(data);
+	function search() {
+	str = document.getElementById('search').value;
+	$.ajax({
+	url: "/items.php?q=" + str,
+		success: function (data) {
+		console.log(data);
+		$("#results").empty();
+		$("#results").append(data);
         }
-     });
-  }
+		});
+		}
 </script>
-    <input type="text" id="search" name="search"/>
-    <input type="submit" value="Submit" onclick="search()"/>
-    <br>
-    <div id="results"></div>
+<br>
+
+<nav class="level">
+  <div class="level-item has-text-centered"">
+      <p class="subtitle is-5">
+        <strong>myTGT</strong>lookup
+      </p>
+ </div>
+   
+ <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="text" id="search" placeholder="dpci, tcin, model, etc...">
+        </p>
+        <p class="control">
+          <button class="button" onclick="search()"/>
+            Search
+          </button>
+        </p>
+      </div>
+<br>
+  <div class="level-item has-text-centered"">
+    <p class="level-item has-text-centered""><strong></strong></p>
+ </div>
+</nav>
+<div id="results"></div>
 </body>
 </html>
